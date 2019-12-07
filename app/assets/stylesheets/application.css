@@ -59,3 +59,10 @@ margin-left: 0;
         margin-left: -15rem;
     }
 }
+
+/* This removes underline from contact links */
+.contact-links a:hover{
+    text-decoration: none;
+    text-decoration-color: transparent;
+    text-decoration-style: none;
+}

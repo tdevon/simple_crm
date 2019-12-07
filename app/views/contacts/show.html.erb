@@ -1,0 +1,29 @@
+<div class="container">
+    <h3> <%= @contact.name %> </h3>
+    <br />
+    <div>
+        <div class="row">
+            <div class="col-sm-2">
+                phone
+            </div>
+            <div class="col-sm">
+                <%= @contact.phone %>
+            </div>
+         </div>
+         <hr />
+    </div>
+
+    <div>
+        <div class="row">
+            <div class="col-sm-2">
+                email
+            </div>
+            <div class="col-sm">
+                <%= @contact.email %>
+            </div>
+         </div>
+         <hr />
+    </div>
+    <br />
+    <%=link_to "Edit", edit_contact_path(@contact), :class => "btn btn-secondary btn-sm float-right" %>
+</div>
