@@ -1,0 +1,12 @@
+<% if notice or alert %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+<% end %>
+
+<% if @contact && @contact.errors.messages %>
+    <% @contact.errors.each do |k, v| %>
+        <div class="alert alert-danger">
+            <%= v %> 
+        </div>
+    <% end %>
+<% end %>

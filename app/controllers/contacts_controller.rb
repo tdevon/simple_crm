@@ -13,8 +13,8 @@ class ContactsController < ApplicationController
         if @contact.save
             redirect_to @contact
         else
-            flash.now["notice"] = "Unable to build."
-            render new
+            flash.now["error"] = @contact.errors.full_messages
+            render 'new'
         end
     end
     def edit
@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
         if @contact.update(contact_params)
             redirect_to @contact
         else
-            flash.now["notice"] = "Unable to update."
+            flash.now["error"] = @contact.errors.full_messages
             render 'edit'
         end
     end
