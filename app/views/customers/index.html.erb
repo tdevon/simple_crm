@@ -1,0 +1,11 @@
+
+<%= link_to "New Contact", new_customer_path, :class=>"btn btn-primary" %>
+<br />
+<br />
+
+<% @customers.each do |customer| %>
+    <div class="card card-body">
+        <p class="lead"><%= customer.name %></p>
+        <span><%= customer.email %> <%= customer.phone %> <%= link_to "View", customer_url(customer)%></span>
+    </div>
+<% end %>

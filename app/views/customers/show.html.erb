@@ -1,0 +1,9 @@
+<br/>
+<div class="container">
+    <h3> <%= @customer.name %> </h3>
+    <%= @customer.email %> <br />
+    <%= @customer.phone %>
+    <br />
+    <br />
+    <%=link_to "Edit", edit_customer_path(@customer), :class => "btn btn-primary" %>
+</div>
