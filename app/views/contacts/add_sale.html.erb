@@ -1,20 +1,26 @@
-<h3> Add sale </h3>
+<div class="container">
+    <h3> Add sale </h3>
+    <br/>
+    <% if @sales.where("contact_id = ?", @contact.id) <=> @sales.all%>
+        <p> All sales belong to this customer.</p>
+    <% else %>
+        <% @sales.each do |sale| %>
+            <% if @contact.sales.exists? sale.id %>
 
-<% if @sales.where("contact_id = ?", @contact.id) <=> @sales.all%>
-    <p> All sales belong to this customer.</p>
-<% else %>
-    <% @sales.each do |sale| %>
-        <% if @contact.sales.exists? sale.id %>
-
-        <% else %>
-            <%= form_for sale do |f|%>
-                <div class="contact-link">
-                    <p class="float-left pr-3"><%= f.radio_button :contact_id, @contact.id %></p>
-                    <p class="lead"><%= sale.title %></p>
-                    <hr/>
-                </div>
-                <%= f.submit "Add Sale" %>
+            <% else %>
+                <%= form_for sale do |f|%>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <%= f.radio_button :contact_id, @contact.id, :class=>"form-check-input"%>
+                            <span class="lead ml-3"><%= sale.title %></span>
+                        </label>
+                    </div>
+                     
+                     <hr/>
+                     <br />
+                     <%= f.submit "Add Sale", :class => "btn btn-primary" %>
+                <% end %>
             <% end %>
         <% end %>
     <% end %>
-<% end %>
+</div>

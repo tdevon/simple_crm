@@ -1,12 +1,22 @@
-<h3> Add contact </h3>
-<%= form_for @sale do |f|%>
-    <% @contacts.each do |contact| %>
-        <div class="contact-link">
-            <p class="float-left pr-3"><%= f.radio_button :contact_id, contact.id %></p>
-            <p class="lead"><%= contact.name %></p>
-            <hr/>
-        </div>
-    <% end %>
+<div class="container">
+    <h3> Add contact </h3>
+    <br/>
+    <%= form_for @sale do |f|%>
+        <% @contacts.each do |contact| %>
 
-    <%= f.submit %>
-<% end %>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <%= f.radio_button :contact_id, contact.id, :class=>"form-check-input" %> 
+                    <span class="lead ml-3"><%= contact.name %></span>
+                </label>
+            </div>
+
+            <hr/>
+        <% end %>
+        
+        <div class="container mt-5">
+        <%= f.submit "Update sale", :class => "btn btn-primary" %>
+        </div>
+
+    <% end %>
+</div>
