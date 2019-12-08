@@ -1,0 +1,12 @@
+<h3> Add contact </h3>
+<%= form_for @sale do |f|%>
+    <% @contacts.each do |contact| %>
+        <div class="contact-link">
+            <p class="float-left pr-3"><%= f.radio_button :contact_id, contact.id %></p>
+            <p class="lead"><%= contact.name %></p>
+            <hr/>
+        </div>
+    <% end %>
+
+    <%= f.submit %>
+<% end %>

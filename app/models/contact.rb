@@ -1,5 +1,6 @@
 class Contact < ApplicationRecord
   belongs_to :user
+  has_many :sales
 
   validates :user, presence: true
   

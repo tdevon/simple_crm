@@ -1,29 +1,60 @@
 <div class="container">
-    <h3> <%= @contact.name %> </h3>
-    <br />
-    <div>
-        <div class="row">
-            <div class="col-sm-2">
-                phone
+    <div class="row">
+        <div class="col-md-4">
+            <div class="container card card-body">
+                <h4> <%= @contact.name %> </h4>
+                <br />
+                <div class="clearfix">
+                    <div class="float-left">
+                        phone
+                    </div>
+                    <div class="float-right">
+                        <%= @contact.phone %>
+                    </div>
+                </div><hr />
+                <div class="clearfix">
+                    <div class="float-left">
+                        email
+                    </div>
+                    <div class="float-right">
+                        <%= @contact.email %>
+                    </div>
+                </div><hr />
+                <div class="clearfix">
+                    <%=link_to "Edit", edit_contact_path(@contact), :class => "btn btn-secondary btn-sm float-right" %>
+                </div>
             </div>
-            <div class="col-sm">
-                <%= @contact.phone %>
-            </div>
-         </div>
-         <hr />
-    </div>
+        </div>
 
-    <div>
-        <div class="row">
-            <div class="col-sm-2">
-                email
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h4 class="text-center"> Sales </h4>
+                <div class="clearfix">
+                    <%= link_to "New Sale", new_sale_url, :class => "btn btn-primary float-right", :contact_id => @contact.id %>
+                </div>
+                <% @sales.each do |sale| %>
+                    <%= link_to sale_url(sale) do %>
+                    
+                        <div class="sale-link">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <div>
+                                    <span class="lead"><%= sale.title %></span>
+                                    </div>
+                                    <span class="small"><%= sale.date.strftime("%B %d, %Y") %></span> <br/>
+                                    <span> <%= sale.description %> </span> <br />
+                                </div>
+                                <div class="float-right">
+                                    <br/>
+                                    <p class="lead"> $ <%= "%.2f" % sale.price %> </p>
+                                </div>
+                            </div>
+                        <div>
+                        <hr/>
+                    <% end %> 
+                <% end %>
             </div>
-            <div class="col-sm">
-                <%= @contact.email %>
-            </div>
-         </div>
-         <hr />
+        </div>
     </div>
-    <br />
-    <%=link_to "Edit", edit_contact_path(@contact), :class => "btn btn-secondary btn-sm float-right" %>
 </div>

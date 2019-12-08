@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :contacts, inverse_of: :user
+  has_many :sales, inverse_of: :user
 end

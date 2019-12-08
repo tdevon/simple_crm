@@ -4,6 +4,8 @@ class ContactsController < ApplicationController
     end
     def show
         @contact = current_user.contacts.find_by(id: params[:id])
+        @sales = @contact.sales.all
+        @sales = @sales.sort_by(&:date).reverse!
     end
     def new
         @contact = current_user.contacts.build
@@ -31,6 +33,6 @@ class ContactsController < ApplicationController
     end
 private
     def contact_params
-        params.require(:contact).permit(:name, :email, :phone)
+        params.require(:contact).permit(:name, :email, :phone, :contact)
     end
 end

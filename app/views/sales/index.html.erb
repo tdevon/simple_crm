@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="container clearfix">
+        <%= link_to "New Sale", new_sale_path, :class=>"btn btn-primary float-right" %>
+        
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link <%= params[:sort] == "recent" ? "active": nil%> <%= params[:sort] == nil ? "active": nil%>" href="?sort=recent">Recent</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= params[:sort] == "amount" ? "active": nil%>" href="?sort=amount">Amount</a>
+            </li>
+        </ul>
+        <br />
+    </div>
+
+    <div class="container">
+    <% @sales.each do |sale| %>
+        <%= link_to sale_url(sale) do %>
+        
+            <div class="sale-link">
+                <div class="clearfix">
+                    <div class="float-left">
+                        <div>
+                        <span class="lead"><%= sale.title %></span>
+                        </div>
+                        <span class="small"><%= sale.date.strftime("%B %d, %Y") %></span> <br/>
+                        <span> <%= sale.description %> </span> <br />
+                    </div>
+                    <div class="float-right">
+                        <br/>
+                        <p class="lead"> $ <%= "%.2f" % sale.price %> </p>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+
+        <% end %> 
+    <% end %>
+    </div>
+</div>
