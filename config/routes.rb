@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :sales
   get "sales/:id/contact", to: "sales#add_contact", as: :add_contact
   post "sales/:id/contact", to: "sales#update"
+  get "contacts/:id/sale", to: "contacts#add_sale", as: :add_sale
+  post "contacts/:id/sale", to: "sales#update"
 end

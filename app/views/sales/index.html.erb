@@ -3,12 +3,12 @@
         <%= link_to "New Sale", new_sale_path, :class=>"btn btn-primary float-right" %>
         
         <ul class="nav nav-pills">
-            <li class="nav-item">
+            <small><li class="nav-item">
                 <a class="nav-link <%= params[:sort] == "recent" ? "active": nil%> <%= params[:sort] == nil ? "active": nil%>" href="?sort=recent">Recent</a>
-            </li>
-            <li class="nav-item">
+            </li></small>
+            <small><li class="nav-item">
                 <a class="nav-link <%= params[:sort] == "amount" ? "active": nil%>" href="?sort=amount">Amount</a>
-            </li>
+            </li></small>
         </ul>
         <br />
     </div>

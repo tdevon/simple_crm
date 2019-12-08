@@ -31,7 +31,7 @@
             <div class="card card-body">
                 <h4 class="text-center"> Sales </h4>
                 <div class="clearfix">
-                    <%= link_to "New Sale", new_sale_url, :class => "btn btn-primary float-right", :contact_id => @contact.id %>
+                    <%= link_to "New Sale", add_sale_path, :class => "btn btn-primary float-right", :contact_id => @contact.id %>
                 </div>
                 <% @sales.each do |sale| %>
                     <%= link_to sale_url(sale) do %>

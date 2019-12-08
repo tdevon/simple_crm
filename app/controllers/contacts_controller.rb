@@ -31,6 +31,10 @@ class ContactsController < ApplicationController
             render 'edit'
         end
     end
+    def add_sale
+        @sales = current_user.sales.all
+        @contact = current_user.contacts.find_by(id: params[:id])
+    end
 private
     def contact_params
         params.require(:contact).permit(:name, :email, :phone, :contact)
