@@ -1,8 +1,48 @@
-<% @contacts.each do |contact| %>
-    <%= link_to contact do %>
-        <div class="contact-link">
-            <p class="lead"><%= contact.name %></p>
-            <hr/>
-        </div>
-    <% end %> 
-<% end %>
+<div class="row">
+    <div class="col-md-3">
+        <% @contacts.each do |contact| %>
+            <div class="contact-link font-weight-bold" id="<%=contact.id%>">
+                <%= contact.name %>
+            </div>
+        <% end %>
+    </div>
+    <div class="col-md-9">
+        <% @contacts.each do |contact| %>
+            <div class="card card-body contact-info" id="<%=contact.id%>-info">
+                <h4> <%= contact.name %> </h4>
+                <br />
+                <div class="clearfix">
+                    <div class="float-left">
+                        phone
+                    </div>
+                    <div class="float-right">
+                        <%= contact.phone %>
+                    </div>
+                </div><hr />
+                <div class="clearfix">
+                    <div class="float-left">
+                        email
+                    </div>
+                    <div class="float-right">
+                        <%= contact.email %>
+                    </div>
+                </div><hr />
+                <div class="clearfix">
+                    <%= link_to "View", contact_path(contact), :class => "float-right" %>
+                </div>
+                <br/>           
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<script>
+    $(".contact-info").hide()
+    $(".contact-link").css("color", "inherit")
+    $(".contact-link").click(function( event ) {
+        $(".contact-info").hide()
+        $(".contact-link").css("color", "inherit")
+        $(`#${event.target.id}-info`).show()
+        $(`#${event.target.id}`).css("color", "grey")
+    });
+</script>

@@ -1,7 +1,16 @@
-<%= link_to "New Contact", new_contact_path, :class=>"btn btn-primary float-right" %>
-<br />
-<br />
+<div class="container clearfix">
+    <div class="float-left">
+        <h2> Contacts </h2>
+    </div>
+    <div class="float-right">
+        <%= link_to "New Contact", new_contact_path, :class=>"btn btn-primary" %>
+    </div>
+</div>
 
-<div class="contact-links">
+<div class="container">
+    <hr />
+</div>
+
+<div class="container">
     <%= render "contacts/partials/contacts.html.erb", locals:{contacts: @contacts}%>
 </div>
