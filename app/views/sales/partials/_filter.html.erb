@@ -1,10 +1,9 @@
-
-<ul class="nav nav-pills">
-    <small><li class="nav-item">
-        <a class="nav-link <%= params[:sort] == "recent" ? "active": nil%> <%= params[:sort] == nil ? "active": nil%>" href="?sort=recent">Recent</a>
-    </li></small>
-    <small><li class="nav-item">
-        <a class="nav-link <%= params[:sort] == "amount" ? "active": nil%>" href="?sort=amount">Amount</a>
-    </li></small>
-</ul>
+<div class="nav nav-pills">
+    <div class="nav-item">
+        <small><a class="nav-link <%= params[:sort] == "recent" ? "active": nil%> <%= params[:sort] == nil ? "active": nil%>" href="?sort=recent">Recent</a></small>
+    </div>
+    <div class="nav-item">
+        <small><a class="nav-link <%= params[:sort] == "amount" ? "active": nil%>" href="?sort=amount">Amount</a></small>
+    </div>
+</div>
 <br />
