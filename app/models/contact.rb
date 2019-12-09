@@ -1,7 +1,7 @@
 class Contact < ApplicationRecord
   belongs_to :user
   has_many :sales
-  has_many :touchpoints
+  has_many :touchpoints, dependent: :destroy
   accepts_nested_attributes_for :touchpoints
 
   validates :user, presence: true
