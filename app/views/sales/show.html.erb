@@ -1,20 +1,3 @@
 <div class="w-50 mx-auto">
-    <div class="">
-        <h2><%= @sale.title %></h2>
-
-        <span><%= @sale.date.strftime("%B %d, %Y") %></span><br/>
-
-        <% if @contact %> 
-            <span><%= link_to @contact.name, @contact %></span>
-        <% end %>
-         <% if @contact.nil? %>
-            <%= link_to "Add Contact", add_contact_path(@sale)%>
-        <% end %>
-        <br/><br/>
-
-        <span class="lead"> $ <%= "%.2f" % @sale.price %> </span>
-        <%# @sale.description %>
-
-
-    </div>
+    <%= render 'sales/partials/sale.html.erb', locals:{sale: @sale}%>
 </div>

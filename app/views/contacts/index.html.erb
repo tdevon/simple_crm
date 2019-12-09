@@ -3,12 +3,5 @@
 <br />
 
 <div class="contact-links">
-<% @contacts.each do |contact| %>
-    <%= link_to contact_url(contact) do %>
-        <div class="contact-link">
-            <p class="lead"><%= contact.name %></p>
-            <hr/>
-        </div>
-    <% end %> 
-<% end %>
+    <%= render "contacts/partials/contacts.html.erb", locals:{contacts: @contacts}%>
 </div>

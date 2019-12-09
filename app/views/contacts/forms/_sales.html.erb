@@ -1,0 +1,15 @@
+<% @sales.each do |sale| %>
+    <% unless @contact.sales.exists? sale.id %>
+        <%= form_for sale do |f|%>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <%= f.radio_button :contact_id, @contact.id, :class=>"form-check-input"%>
+                    <span class="lead ml-3"><%= sale.title %></span>
+                </label>
+            </div>
+            <hr/>
+            <br />
+            <%= f.submit "Add Sale", :class => "btn btn-primary" %>
+        <% end %>
+    <% end %>
+<% end %>

@@ -1,0 +1,8 @@
+<% @contacts.each do |contact| %>
+    <%= link_to contact do %>
+        <div class="contact-link">
+            <p class="lead"><%= contact.name %></p>
+            <hr/>
+        </div>
+    <% end %> 
+<% end %>

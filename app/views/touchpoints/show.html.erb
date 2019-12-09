@@ -10,9 +10,6 @@
 <div class="container">
     <p class="lead"> <%= @touchpoint.date.strftime("%B %d, %Y") %></p>
     <h5><%= @touchpoint.title %></h5>
-    
     <p><%= @touchpoint.details %></p>
-
     <%= link_to "edit", edit_contact_touchpoint_path(@touchpoint)%>
-    
 </div>

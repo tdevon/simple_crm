@@ -1,24 +1,6 @@
 <div class="container">
     <h3> Edit Sale </h3>
-    <div id="new_sale_form">
-        <%= form_for @sale do |f|%>
-            <div class="input-group mb-2 mr-sm-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">$</div>
-                </div>
-                <%= f.number_field :price, :class=>"form-control", :placeholder => "Amount"%>
-            </div>
-
-            <div class="form-group">
-                <%= f.date_field :date, :class=>"form-control"%>
-            </div>
-            <div class="form-group">
-                <%= f.text_field :title, :class=>"form-control", :placeholder => "Product / Service" %>
-            </div>
-            <div class="form-group">
-                <%= f.text_field :description, :class=>"form-control", :placeholder => "Sale details" %>
-            </div>
-            <%= f.submit :class=>"btn btn-primary"%>
-        <% end %>
+    <div id="edit_sale_form">
+        <%= render 'sales/forms/sale.html.erb', locals:{sale: @sale}%>
     </div>
 </div>

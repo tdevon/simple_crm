@@ -1,0 +1,12 @@
+<%= form_for @contact do |f|%>
+    <div class="form-group">
+        <%= f.text_field :name, :class => "form-control", :placeholder => "Name"%>
+    </div>
+    <div class="form-group">
+        <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+    </div>
+    <div class="form-group">
+        <%= f.text_field :phone, :class => "form-control", :placeholder => "Phone number"%>
+    </div>
+    <%= f.submit :class=>"btn btn-primary"%>
+<% end %>

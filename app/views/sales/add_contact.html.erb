@@ -1,22 +1,5 @@
 <div class="container">
     <h3> Add contact </h3>
     <br/>
-    <%= form_for @sale do |f|%>
-        <% @contacts.each do |contact| %>
-
-            <div class="form-check">
-                <label class="form-check-label">
-                    <%= f.radio_button :contact_id, contact.id, :class=>"form-check-input" %> 
-                    <span class="lead ml-3"><%= contact.name %></span>
-                </label>
-            </div>
-
-            <hr/>
-        <% end %>
-        
-        <div class="container mt-5">
-        <%= f.submit "Update sale", :class => "btn btn-primary" %>
-        </div>
-
-    <% end %>
+    <%= render "sales/forms/contacts.html.erb", locals:{sale: @sale, contacts:@contacts}%>
 </div>
