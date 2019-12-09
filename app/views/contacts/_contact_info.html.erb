@@ -1,0 +1,24 @@
+<div class="card card-body">
+    <h4> <%= @contact.name %> </h4>
+    <br />
+    <div class="clearfix">
+        <div class="float-left">
+            phone
+        </div>
+        <div class="float-right">
+            <%= @contact.phone %>
+        </div>
+    </div><hr />
+    <div class="clearfix">
+        <div class="float-left">
+            email
+        </div>
+        <div class="float-right">
+            <%= @contact.email %>
+        </div>
+    </div><hr />
+    <div class="clearfix">
+        <%= link_to "Edit", edit_contact_path(@contact), :class => "float-right" %>
+    </div>
+    <br/>           
+</div>

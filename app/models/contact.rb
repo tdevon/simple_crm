@@ -1,6 +1,8 @@
 class Contact < ApplicationRecord
   belongs_to :user
   has_many :sales
+  has_many :touchpoints
+  accepts_nested_attributes_for :touchpoints
 
   validates :user, presence: true
   

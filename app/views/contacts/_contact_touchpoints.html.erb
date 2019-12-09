@@ -1,0 +1,19 @@
+<div>
+    <div class="clearfix mb-3">
+        <%= link_to "Log Interaction", new_contact_touchpoint_path(@contact), :class => "btn btn-primary float-right" %>
+    </div>
+    <% if @contact.touchpoints.any? %>
+        <% @contact.touchpoints.each do |touchpoint| %>
+            <div class="card">
+                <div class="card-header">
+                    <small><%= touchpoint.date.strftime("%B %d, %Y") %></small>
+                </div>
+                <div class="card-body">
+                    <p class="lead"><%= touchpoint.title %></p>
+                    <p><%= touchpoint.details %></p>
+                    <%= link_to "View touchpoint", contact_touchpoint_path(touchpoint)%>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+</div>

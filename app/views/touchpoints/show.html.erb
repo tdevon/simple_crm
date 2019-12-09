@@ -1,0 +1,18 @@
+<div class="container">
+    <%= link_to @contact do %>
+        <div>
+            <h2> <%= @touchpoint.contact.name %></h2>
+        </div>
+        <hr/>
+    <% end %>
+</div>
+
+<div class="container">
+    <p class="lead"> <%= @touchpoint.date.strftime("%B %d, %Y") %></p>
+    <h5><%= @touchpoint.title %></h5>
+    
+    <p><%= @touchpoint.details %></p>
+
+    <%= link_to "edit", edit_contact_touchpoint_path(@touchpoint)%>
+    
+</div>

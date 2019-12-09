@@ -6,4 +6,5 @@ class User < ApplicationRecord
   
   has_many :contacts, inverse_of: :user
   has_many :sales, inverse_of: :user
+  has_many :touchpoints, through: :contacts
 end
