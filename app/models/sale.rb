@@ -4,5 +4,5 @@ class Sale < ApplicationRecord
     validates :user, presence: true
     validates :price, presence: true
     validates :title, presence: true
-    validates :description, presence: true
+    # validates :description
 end

@@ -17,5 +17,8 @@ class Contact < ApplicationRecord
   validates :email, allow_blank: true, uniqueness: {
                                   case_sensitive: false, 
                                   message: "Theres already a contact with that email!"}
+  
+  # validates :company
+  # validates :notes
                                   
 end

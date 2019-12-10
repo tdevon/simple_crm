@@ -1,28 +1,26 @@
-<div class="card card-body">
-    <h4 class="text-center"> Sales </h4>
-    <div class="clearfix">
-        <%= link_to "New Sale", add_sale_path, :class => "btn btn-primary float-right", :contact_id => @contact.id %>
-    </div>
-    <% @sales.each do |sale| %>
-        <%= link_to sale_url(sale) do %>
-        
-            <div class="sale-link">
-                <div class="clearfix">
-                    <div class="float-left">
-                        <div>
-                            <span class="lead"><%= sale.title %></span>
+<div class="">
+    <h2> Sales <%= link_to "+", add_sale_url(@contact), :class => "btn btn-light btn-sm float-right", :contact_id => @contact.id %></h2>
+    <div class="mt-4 pt-5">
+        <% @sales.each do |sale| %>
+            <%= link_to sale_url(sale) do %>
+                <div class="sale-link">
+                    <div class="clearfix">
+                        <div class="float-left">
+                            <div>
+                                <span class="lead"><%= sale.title %></span>
+                            </div>
+                            <span class="small"><%= sale.date.strftime("%B %d, %Y") %></span> <br/>
+                            <span> <%= sale.description %> </span> <br />
                         </div>
-                        <span class="small"><%= sale.date.strftime("%B %d, %Y") %></span> <br/>
-                        <span> <%= sale.description %> </span> <br />
+                        
+                        <div class="float-right">
+                            <br/>
+                            <p class="lead"> $ <%= "%.2f" % sale.price %> </p>
+                        </div>  
                     </div>
-                    
-                    <div class="float-right">
-                        <br/>
-                        <p class="lead"> $ <%= "%.2f" % sale.price %> </p>
-                    </div>  
                 </div>
-            </div>
-            <hr />
-        <% end %> 
-    <% end %>
+                <hr />
+            <% end %> 
+        <% end %>
+    </div>
 </div>

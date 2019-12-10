@@ -1,36 +1,52 @@
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
+        <div class="float-right">
+            <%= link_to "+", new_contact_path, :class=>"btn btn-light btn-sm mr-5" %>
+        </div>
         <% @contacts.each do |contact| %>
             <div class="contact-link font-weight-bold" id="<%=contact.id%>">
                 <%= contact.name %>
             </div>
         <% end %>
     </div>
-    <div class="col-md-9">
+    <div class="col-md">
         <% @contacts.each do |contact| %>
-            <div class="card card-body contact-info" id="<%=contact.id%>-info">
-                <h4> <%= contact.name %> </h4>
+            <div class="contact-info" id="<%=contact.id%>-info">
+                <%= link_to contact_url(contact) do %>
+                    <h2><%= contact.name %></h2>
+                <% end %>
+                <div class="text-center">
+                    <button id="<%=contact.id%>" class="btn btn-light btn-sm show-touchpoints"> Touchpoints </button>
+                    <button id="<%=contact.id%>" class="btn btn-light btn-sm show-sales"> Sales </button>
+                </div>
                 <br />
                 <div class="clearfix">
-                    <div class="float-left">
-                        phone
+                    <div>
+                        <span class="mr-3">phone</span><%= contact.phone %>
                     </div>
-                    <div class="float-right">
-                        <%= contact.phone %>
-                    </div>
-                </div><hr />
-                <div class="clearfix">
-                    <div class="float-left">
-                        email
-                    </div>
-                    <div class="float-right">
-                        <%= contact.email %>
-                    </div>
-                </div><hr />
-                <div class="clearfix">
-                    <%= link_to "View", contact_path(contact), :class => "float-right" %>
                 </div>
-                <br/>           
+                <hr />
+                <div class="clearfix">
+                    <div>
+                        <span class="mr-3">email</span> <%= contact.email %>
+                    </div>
+                </div>
+                <hr /><br />      
+                <%= link_to "Edit", edit_contact_path(contact), :class=>"btn btn-light btn-sm" %> 
+            </div>
+        <% end %>
+    </div>
+
+    <div class="col-md-4 contact-actions">
+        <%# link_to "Log Interaction", new_contact_touchpoint_path(@contact), :class => "btn btn-primary float-right" %>
+        <% @contacts.each do |contact| %>
+            <div id="<%=contact.id%>-touchpoints" class="contact-touchpoints">
+                <% @contact = Contact.find_by(id: contact.id) %>
+                <%= render "contacts/partials/touchpoints.html.erb", locals:{contact: @contact}%>
+            </div>
+            <div id="<%=contact.id%>-sales" class="contact-sales">
+                <% @sales = @contact.sales.all %>
+                <%= render "contacts/partials/sales.html.erb", locals:{sales: @sales, contact: @contact}%>
             </div>
         <% end %>
     </div>
@@ -38,11 +54,62 @@
 
 <script>
     $(".contact-info").hide()
+    $(".show-touchpoints").show()
+    $(".contact-actions").hide()
     $(".contact-link").css("color", "inherit")
+
     $(".contact-link").click(function( event ) {
+        $(".contact-sales").hide()
+        $(".contact-touchpoints").hide()
         $(".contact-info").hide()
         $(".contact-link").css("color", "inherit")
         $(`#${event.target.id}-info`).show()
         $(`#${event.target.id}`).css("color", "grey")
+        if($(".show-touchpoints").hasClass("active")){
+            $(".contact-touchpoints").hide()
+            $(`#${event.target.id}-touchpoints`).show()
+        }
+        if($(".show-sales").hasClass("active")){
+            $(".contact-sales").hide()
+            $(`#${event.target.id}-sales`).show()
+        }
+    });
+
+    $('.show-touchpoints').click(function(event){
+        $(".contact-actions").hide()
+        $(".show-sales").removeClass("active")
+        $(".contact-sales").hide()
+        $(`#${event.target.id}-sales`).hide()
+        if ($(event.target).hasClass("active")){
+            $(".contact-actions").hide()
+            $(".show-touchpoints").removeClass("active")
+            $(".contact-touchpoints").hide()
+            $(`#${event.target.id}-touchpoints`).hide()
+        }
+        else {
+            $(".contact-actions").show()
+            $(".show-touchpoints").addClass("active")
+            $(".contact-touchpoints").hide()     
+            $(`#${event.target.id}-touchpoints`).show()
+        }
+    });
+
+    $('.show-sales').click(function(event){
+        $(".contact-actions").hide()
+        $(".show-touchpoints").removeClass("active")
+        $(".contact-touchpoints").hide()
+        $(`#${event.target.id}-touchpoints`).hide()
+        if ($(event.target).hasClass("active")){
+            $(".contact-actions").hide()
+            $(".show-sales").removeClass("active")
+            $(".contact-sales").hide()
+            $(`#${event.target.id}-sales`).hide()
+        }
+        else {
+            $(".contact-actions").show()
+            $(".show-sales").addClass("active")
+            $(".contact-sales").hide()
+            $(`#${event.target.id}-sales`).show()
+        }
     });
 </script>
